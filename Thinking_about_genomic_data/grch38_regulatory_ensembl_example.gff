@@ -1,0 +1,40 @@
+18	Regulatory_Build	regulatory_region	76429380	76430144	.	.	.	ID=ENSR00000105157;bound_end=76430144;bound_start=76429380;description=Open chromatin region;feature_type=Open chromatin
+8	Regulatory_Build	regulatory_region	66405962	66406502	.	.	.	ID=ENSR00000225390;bound_end=66406502;bound_start=66405962;description=Open chromatin region;feature_type=Open chromatin
+4	Regulatory_Build	regulatory_region	61184401	61184600	.	.	.	ID=ENSR00000310154;bound_end=61184600;bound_start=61184401;description=CTCF binding site;feature_type=CTCF Binding Site
+X	Regulatory_Build	regulatory_region	40733600	40737000	.	.	.	ID=ENSR00000245955;bound_end=40737000;bound_start=40733202;description=Predicted promoter;feature_type=Promoter
+5	Regulatory_Build	regulatory_region	97407001	97407200	.	.	.	ID=ENSR00000316258;bound_end=97407200;bound_start=97407001;description=CTCF binding site;feature_type=CTCF Binding Site
+X	Regulatory_Build	regulatory_region	73946201	73946600	.	.	.	ID=ENSR00000247248;bound_end=73946600;bound_start=73946201;description=Predicted promoter flanking region;feature_type=Promoter Flanking Region
+15	Regulatory_Build	regulatory_region	19948201	19949200	.	.	.	ID=ENSR00000276455;bound_end=19949200;bound_start=19948201;description=CTCF binding site;feature_type=CTCF Binding Site
+5	Regulatory_Build	regulatory_region	11302601	11303143	.	.	.	ID=ENSR00000178177;bound_end=11303143;bound_start=11302601;description=Open chromatin region;feature_type=Open chromatin
+2	Regulatory_Build	regulatory_region	208407801	208408000	.	.	.	ID=ENSR00000295775;bound_end=208408000;bound_start=208407801;description=CTCF binding site;feature_type=CTCF Binding Site
+6	Regulatory_Build	regulatory_region	2454157	2454654	.	.	.	ID=ENSR00000192073;bound_end=2454654;bound_start=2454157;description=Open chromatin region;feature_type=Open chromatin
+2	Regulatory_Build	regulatory_region	217075001	217075800	.	.	.	ID=ENSR00000130172;bound_end=217075800;bound_start=217075001;description=Predicted enhancer region;feature_type=Enhancer
+2	Regulatory_Build	regulatory_region	173214208	173214611	.	.	.	ID=ENSR00000126445;bound_end=173214611;bound_start=173214208;description=Open chromatin region;feature_type=Open chromatin
+7	Regulatory_Build	regulatory_region	103657430	103657948	.	.	.	ID=ENSR00000216216;bound_end=103657979;bound_start=103657378;description=Transcription factor binding site;feature_type=TF binding site
+15	Regulatory_Build	regulatory_region	63458401	63460000	.	.	.	ID=ENSR00000277889;bound_end=63460000;bound_start=63458401;description=CTCF binding site;feature_type=CTCF Binding Site
+15	Regulatory_Build	regulatory_region	20386201	20386800	.	.	.	ID=ENSR00000276499;bound_end=20386800;bound_start=20386201;description=CTCF binding site;feature_type=CTCF Binding Site
+1	Regulatory_Build	regulatory_region	203893801	203895200	.	.	.	ID=ENSR00000256263;bound_end=203895200;bound_start=203893801;description=CTCF binding site;feature_type=CTCF Binding Site
+17	Regulatory_Build	regulatory_region	76279201	76280200	.	.	.	ID=ENSR00000284517;bound_end=76280200;bound_start=76279201;description=CTCF binding site;feature_type=CTCF Binding Site
+5	Regulatory_Build	regulatory_region	50922675	50923008	.	.	.	ID=ENSR00000180331;bound_end=50923661;bound_start=50922017;description=Transcription factor binding site;feature_type=TF binding site
+7	Regulatory_Build	regulatory_region	32687401	32688600	.	.	.	ID=ENSR00000325544;bound_end=32688600;bound_start=32687401;description=CTCF binding site;feature_type=CTCF Binding Site
+3	Regulatory_Build	regulatory_region	39676201	39677800	.	.	.	ID=ENSR00000303580;bound_end=39677800;bound_start=39676201;description=CTCF binding site;feature_type=CTCF Binding Site
+9	Regulatory_Build	regulatory_region	105415401	105416000	.	.	.	ID=ENSR00000337140;bound_end=105416000;bound_start=105415401;description=CTCF binding site;feature_type=CTCF Binding Site
+4	Regulatory_Build	regulatory_region	26231101	26231466	.	.	.	ID=ENSR00000167007;bound_end=26231466;bound_start=26231101;description=Open chromatin region;feature_type=Open chromatin
+3	Regulatory_Build	regulatory_region	182078286	182078649	.	.	.	ID=ENSR00000162688;bound_end=182078649;bound_start=182078286;description=Open chromatin region;feature_type=Open chromatin
+1	Regulatory_Build	regulatory_region	20602802	20605200	.	.	.	ID=ENSR00000002638;bound_end=20605200;bound_start=20602802;description=Predicted promoter flanking region;feature_type=Promoter Flanking Region
+16	Regulatory_Build	regulatory_region	67327601	67327800	.	.	.	ID=ENSR00000087105;bound_end=67327800;bound_start=67327601;description=Predicted promoter flanking region;feature_type=Promoter Flanking Region
+11	Regulatory_Build	regulatory_region	131867401	131868000	.	.	.	ID=ENSR00000266643;bound_end=131868000;bound_start=131867401;description=CTCF binding site;feature_type=CTCF Binding Site
+7	Regulatory_Build	regulatory_region	133797884	133798487	.	.	.	ID=ENSR00000218373;bound_end=133798487;bound_start=133797884;description=Open chromatin region;feature_type=Open chromatin
+X	Regulatory_Build	regulatory_region	71912201	71912400	.	.	.	ID=ENSR00000247163;bound_end=71912400;bound_start=71912201;description=Predicted promoter flanking region;feature_type=Promoter Flanking Region
+5	Regulatory_Build	regulatory_region	147857597	147857933	.	.	.	ID=ENSR00000188608;bound_end=147857933;bound_start=147857597;description=Open chromatin region;feature_type=Open chromatin
+17	Regulatory_Build	regulatory_region	21835601	21836400	.	.	.	ID=ENSR00000282814;bound_end=21836400;bound_start=21835601;description=CTCF binding site;feature_type=CTCF Binding Site
+6	Regulatory_Build	regulatory_region	22451805	22452377	.	.	.	ID=ENSR00000194670;bound_end=22452377;bound_start=22451805;description=Open chromatin region;feature_type=Open chromatin
+10	Regulatory_Build	regulatory_region	127980801	127981200	.	.	.	ID=ENSR00000262046;bound_end=127981200;bound_start=127980801;description=CTCF binding site;feature_type=CTCF Binding Site
+X	Regulatory_Build	regulatory_region	16825211	16826065	.	.	.	ID=ENSR00000244865;bound_end=16826065;bound_start=16825211;description=Open chromatin region;feature_type=Open chromatin
+12	Regulatory_Build	regulatory_region	94563150	94563914	.	.	.	ID=ENSR00000055764;bound_end=94563914;bound_start=94563150;description=Open chromatin region;feature_type=Open chromatin
+3	Regulatory_Build	regulatory_region	101559602	101559999	.	.	.	ID=ENSR00000155771;bound_end=101559999;bound_start=101559602;description=Predicted promoter flanking region;feature_type=Promoter Flanking Region
+1	Regulatory_Build	regulatory_region	87449400	87449601	.	.	.	ID=ENSR00000009421;bound_end=87449940;bound_start=87449253;description=Predicted enhancer region;feature_type=Enhancer
+X	Regulatory_Build	regulatory_region	116384412	116384784	.	.	.	ID=ENSR00000248224;bound_end=116384784;bound_start=116384412;description=Open chromatin region;feature_type=Open chromatin
+3	Regulatory_Build	regulatory_region	126198201	126198800	.	.	.	ID=ENSR00000305975;bound_end=126198800;bound_start=126198201;description=CTCF binding site;feature_type=CTCF Binding Site
+15	Regulatory_Build	regulatory_region	63524402	63524780	.	.	.	ID=ENSR00000077820;bound_end=63524780;bound_start=63524201;description=Transcription factor binding site;feature_type=TF binding site
+8	Regulatory_Build	regulatory_region	143208801	143209200	.	.	.	ID=ENSR00000232039;bound_end=143209200;bound_start=143208801;description=Predicted enhancer region;feature_type=Enhancer
