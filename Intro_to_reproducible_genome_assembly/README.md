@@ -41,7 +41,7 @@ Alternatively, if git isn't working for you, you can directly download the zippe
 * Create the environment we'll be working in and install required packages with the command:
 
   ```
-  $ conda create --name ASU_Genomics_Tutorial python=3.6 snakemake fastqc bwa samtools freebayes bcftools bioawk
+  $ conda create --name ASU_Genomics_Tutorial python=3.6 snakemake fastqc bwa samtools freebayes bcftools bioawk bedtools
   ```
 * Load the new environment and add the samblaster package
 
@@ -394,7 +394,7 @@ So, now that we have our pipeline, it's time to make it as reproducible as possi
 ### Sharing your environment
 Luckily, by working with Anaconda, we can easily share our environment (including exact versions of tools).  To do this, we can enter the command:
   ```
-  conda env export > environment.yml
+  $ conda env export > environment.yml
   ```
 and we'll get a file that looks something like:
   ```
@@ -403,15 +403,11 @@ and we'll get a file that looks something like:
   - !!python/unicode
     'bioconda'
   - !!python/unicode
-    'rwest'
-  - !!python/unicode
-    'vgauthier'
-  - !!python/unicode
     'defaults'
   dependencies:
   - asn1crypto=0.22.0=py36_0
-  - biobuilds::samblaster=0.1.24=0
   - bioconda::bcftools=1.4.1=0
+  - bioconda::bedtools=2.26.0=0
   - bioconda::bioawk=1.0=1
   - bioconda::bwa=0.7.15=1
   - bioconda::dropbox=5.2.1=py36_0
@@ -420,11 +416,9 @@ and we'll get a file that looks something like:
   - bioconda::freebayes=1.1.0=py36_1
   - bioconda::ftputil=3.2=py36_0
   - bioconda::java-jdk=8.0.92=1
-  - bioconda::picard=2.9.2=py36_1
   - bioconda::pysftp=0.2.9=py36_0
   - bioconda::samtools=1.4.1=0
   - bioconda::snakemake=3.13.0=py36_1
-  - bioconda::snpsift=4.3.1p=py36_0
   - bioconda::urllib3=1.12=py36_0
   - bzip2=1.0.6=3
   - cffi=1.10.0=py36_0
@@ -434,7 +428,6 @@ and we'll get a file that looks something like:
   - idna=2.5=py36_0
   - mkl=2017.0.1=0
   - numpy=1.13.0=py36_0
-  - openjdk=8.0.121=0
   - openssl=1.0.2l=0
   - packaging=16.8=py36_0
   - pandas=0.20.2=np113py36_0
@@ -459,7 +452,7 @@ and we'll get a file that looks something like:
   - xz=5.2.2=1
   - yaml=0.1.6=0
   - zlib=1.2.8=3
-  prefix: /Users/twebster/anaconda/envs/ASU_Genomics_Tutorial
+  prefix: /Users/thw/anaconda/envs/ASU_Genomics_Tutorial
 
   ```
 This is perfect, except for the prefix line at the end (which will get in the way for future users that don't have the same prefix).  So, we'll need to delete that line.  You can do this in a text editor like ```nano``` or ```vi``` (both come standard in most Linux/UNIX environments).  If you haven't used ```vi``` or something similar before, you're probably going to have huge issues writing, saving, and exiting, so I would probably avoid it for now.  ```nano``` can be used by simply typing ```nano <filename>```, using your keyboard arrows to move down to the bottom of the file, manually deleting the last two lines, and following the instructions on the bottom of the screen to exit.
@@ -531,13 +524,76 @@ rule <rule_name>:
 A more concrete example, such as our very first ```bwa``` command from above, would look like:
 ```
 rule bwa_mem_mapping:
-  input:
-    ref="reference/human_g1k_v37_MT.fasta",
-    fastq1="fastq/ind1_1.fastq.gz",
-    fastq2="fastq/ind1_2.fastq.gz"
-  output:
-    "bam/ind1.sam"
-  shell:
-    "bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
+	input:
+		ref="reference/human_g1k_v37_MT.fasta",
+		fastq1="fastq/ind1_1.fastq.gz",
+		fastq2="fastq/ind1_2.fastq.gz"
+ 	output:
+		"bam/ind1.sam"
+	shell:
+		"bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
 ```
-Breaking down each part, we first have to declare our "rule" with ```rule bwa_mem_mapping:```.  Note the lack of indentation (tabs, spaces, and whitespace are very important in python) and the colon.  We then indent and declare our input with the keyword ```input:```.  Again, note the indentation (a single tab) and the colon.  Next, we indent and declare variables that are required for this rule as input.  Here, we declare ```ref``` (a reference genome), ```fastq1``` (the first of the two paired-end fastq files), and ```fastq2``` (the second of the two paired-end fastq files). Note the indentation (two tabs), the quotes around the file paths, and the commas.
+Breaking down each part, we first have to declare our "rule" with ```rule bwa_mem_mapping:```.  Note the lack of indentation (tabs, spaces, and whitespace are very important in python) and the colon.  We then indent and declare our input with the keyword ```input:```.  Again, note the indentation (a single tab) and the colon.  Next, we indent and declare variables that are required for this rule as input.  Here, we declare ```ref``` (a reference genome), ```fastq1``` (the first of the two paired-end fastq files), and ```fastq2``` (the second of the two paired-end fastq files). Note the indentation (two tabs), the quotes around the file paths, and the commas.  We then move back to the same indent level as ```input:``` for ```output:```.  For output, we indent the line ```bam/ind1.sam```, but we don't assign it to a specific variable name.  Finally, we have ```shell:```.  This is the actual command that will be executed.  The variables in curly brackets allow us to call variables from input and output above.  Note that these variables in curly braces are local to this rule (i.e., it determines what {input.ref} is by checking the "ref" variable in "input" within the same rule).  As you can see, we access each of the variables in input using the format: input.VARIABLE. When we only have a single variable and it isn't assigned to a particular name, as in output here, we can access this variable by just calling {output}.
+
+The easiest way to understand a snakemake workflow is as follows.  It runs line by line through the Snakefile (main snakemake script) like a normal Python script until it hits the first rule (declared with the "rule RULENAME:" format we saw above).  During this time you can assign variables, functions, classes, etc. just like you would in Python.  However, once it hits that first rule, things change. It reads that first rule's input, sees what it needs to create it, and then executes the rule.  In our example above, all of our input files are declared explicitly, so Snakemake would just run this rule (if it were first) and quit. Snakemake will chain backwards from input to the output required to create it and so on, until it finds a point it can start with and then runs that series of rules.  In our example, if we had a second rule "rule bwa_mem_mapping2:" below our first, that simply replaced "ind1" with "ind2", _the second rule would not run_ because the second rule is not required for the completion of a first.  For that reason, most Snakemake scripts begin with a "rule all:" with no output.  It instead lists all of your expected output files.  Here's a quick example that would run our two rules:
+
+```
+rule all:
+	input:
+		"bam/ind1.sam",
+		"bam/ind2.sam",
+
+rule bwa_mem_mapping:
+	input:
+		ref="reference/human_g1k_v37_MT.fasta",
+		fastq1="fastq/ind1_1.fastq.gz",
+		fastq2="fastq/ind1_2.fastq.gz"
+ 	output:
+		"bam/ind1.sam"
+	shell:
+		"bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
+
+rule bwa_mem_mapping2:
+	input:
+		ref="reference/human_g1k_v37_MT.fasta",
+		fastq1="fastq/ind2_1.fastq.gz",
+		fastq2="fastq/ind2_2.fastq.gz"
+ 	output:
+		"bam/ind2.sam"
+	shell:
+		"bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
+```
+
+In this example, Snakemake would traverse the script line by line until hitting ```rule all```.  It would see that ```rule all``` requires two input files: ```bam/ind1.sam``` and ```bam/ind2.sam```.  It would then find the rules required to create each file, and deterimine that ```rule bwa_mem_mapping``` is required to create ```bam/ind1.sam``` and that ```rule bwa_mem_mapping2``` is required to create ```bam/ind2.sam``` and execute the two rules.
+
+How might we improve this script?  Well, first of all, we can see that the input files to ```rule all``` have a similar structure.  In our case, two files isn't much to list, but you can imagine that things would get really repetitive if we started to add more files.  To handle this sort of situation, Snakemake offers a handy solution, ```expand()``` that uses the information provided to return a list.  Here's how we would use ```expand()``` in our example:
+
+```
+rule all:
+	input:
+		expand("bam/{individual}.sam", individual=["ind1","ind2"])
+
+rule bwa_mem_mapping:
+	input:
+		ref="reference/human_g1k_v37_MT.fasta",
+		fastq1="fastq/ind1_1.fastq.gz",
+		fastq2="fastq/ind1_2.fastq.gz"
+ 	output:
+		"bam/ind1.sam"
+	shell:
+		"bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
+
+rule bwa_mem_mapping2:
+	input:
+		ref="reference/human_g1k_v37_MT.fasta",
+		fastq1="fastq/ind2_1.fastq.gz",
+		fastq2="fastq/ind2_2.fastq.gz"
+ 	output:
+		"bam/ind2.sam"
+	shell:
+		"bwa mem -M {input.ref} {input.fastq1} {input.fastq2} > {output}"
+```
+
+In this example, ```{individual}``` is a wildcard that ```expand()``` iteratively populates with each item from the list assigned to ```individual``` after the comma, returning the list: ```["bam/ind1.sam", "bam/ind2.sam"]```.  This list is identical to what we had previously, when we explicitly listed each item.
+
+Looking at our example again, our two mapping rules also look fairly repetitive.  Snakemake allows 

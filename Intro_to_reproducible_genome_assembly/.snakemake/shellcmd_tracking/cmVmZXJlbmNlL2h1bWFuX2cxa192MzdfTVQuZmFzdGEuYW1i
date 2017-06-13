@@ -1,0 +1,1 @@
+samtools faidx reference/human_g1k_v37_MT.fasta && samtools dict -o reference/human_g1k_v37_MT.dict reference/human_g1k_v37_MT.fasta && bwa index reference/human_g1k_v37_MT.fasta

@@ -1,0 +1,1 @@
+samtools stats bam/ind2.rmdup.sorted.bam | grep ^SN | cut -f 2- > stats/ind2.rmdup.sorted.bam.stats

@@ -1,0 +1,1 @@
+samtools index bam/ind2.rmdup.sorted.bam
