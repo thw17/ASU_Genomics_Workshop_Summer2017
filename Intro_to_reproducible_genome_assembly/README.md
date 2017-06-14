@@ -115,7 +115,7 @@ If you've sent your samples to a core for sequencing, they'll likely return to y
 
 For today's tutorial, we have paired-end reads from two individuals: ind1 and ind2.  Forward reads are in files ending in "1.fastq.gz" and reverse reads are in the two files ending in "2.fastq.gz".  We can take a look at the first two reads in the file ```ind1_1.fastq.gz``` using ```zcat``` on Linux or ```gzcat``` on Mac/Unix combined with ```head```:
   ```
-$ fastq/ind1_1.fastq.gz | head -n 8
+$ zcat fastq/ind1_1.fastq.gz | head -n 8
 
 @H7AGFADXX131213:1:2110:18963:43686
 ATTGTATTAGCAAACTCATCACTAGACATCGTACTACACGACACGTACTACGTTGTAGCCCACTTCCACTATGTCCTATCAATAGGAGCTGTATTTGCCATCATAGGAGGCTTCATTCACTGATTTCCCCTATTCTCAGGCTACACCCTAGACCAAACCTACGCCAAAATCCATTTCACTATCATATTCATCGGCGTAAATCTAACTTTCTTCCCACAACACTTTCTCGGCCTATCCGGAATGCCCCGAC
@@ -541,7 +541,7 @@ The easiest way to understand a snakemake workflow is as follows.  It runs line 
 rule all:
 	input:
 		"bam/ind1.sam",
-		"bam/ind2.sam",
+		"bam/ind2.sam"
 
 rule bwa_mem_mapping:
 	input:
@@ -596,4 +596,4 @@ rule bwa_mem_mapping2:
 
 In this example, ```{individual}``` is a wildcard that ```expand()``` iteratively populates with each item from the list assigned to ```individual``` after the comma, returning the list: ```["bam/ind1.sam", "bam/ind2.sam"]```.  This list is identical to what we had previously, when we explicitly listed each item.
 
-Looking at our example again, our two mapping rules also look fairly repetitive.  Snakemake allows 
+Looking at our example again, our two mapping rules also look fairly repetitive.  Snakemake allows
