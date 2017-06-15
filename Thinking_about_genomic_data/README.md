@@ -26,3 +26,24 @@ samtools faidx toy.fasta
 samtools dict human_g1k_v37_MT.fasta -o human_g1k_v37_MT.dict
 samtools dict toy.fasta -o toy.dict
 ```
+
+- toy.fasta was manually created by the author and its indices were generated with the commands:
+```
+samtools faidx toy.fasta
+samtools dict toy.dict
+```
+
+- hg38_knowngene_UCSC_example.bed and hg38_knowngene_UCSC_example.gtf were both created by grabbing the first 39 lines of files output from the [UCSC Table Browser](http://genome.ucsc.edu/cgi-bin/hgTables).  In both cases, I grabbed GENCODE v24 knowngene information from chromosome 1 of hg38.
+
+- grch38_regulatory_ensembl_example.gff was created by grabbing the first 40 lines of the regulatory build gff annotation for hg38 from [Ensembl](ftp://ftp.ensembl.org/pub/release-89/regulation/homo_sapiens/)
+
+- example.sam is the first 4000 lines of a sam file from some of my unpublished data.  example.bam was generated with the command:
+```
+samtools view -b -o example.bam example.sam
+```
+
+- The four example vcf files contain example lines from vcf from some of my unpublished data.
+
+- example2_1.fastq and example2_2.fastq are the first six read pairs from on of my unpubished datasets.
+
+- The fastqs from ind1 and ind2 were subset from 1000 genomes high coverage bams (HG00096.wgs.ILLUMINA.bwa.GBR.high_cov_pcr_free.20140203.bam and HG00268.wgs.ILLUMINA.bwa.FIN.high_cov_pcr_free.20140203.bam) available from here: ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/. Details about the commands used to process the data can be [found here](https://github.com/thw17/ASU_Genomics_Workshop_Summer2017/tree/master/Intro_to_reproducible_genome_assembly/fastq)
