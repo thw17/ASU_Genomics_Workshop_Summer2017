@@ -33,6 +33,8 @@ Alternatively, if git isn't working for you, you can directly download the zippe
 * Add bioconda channels to conda with the following commands:
   ```
   $ conda config --add channels r
+  
+  $ conda config --add channels defaults
 
   $ conda config --add channels conda-forge
 
